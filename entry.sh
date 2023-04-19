@@ -40,7 +40,7 @@ if [ $fileCount != 0 ]; then
     /usr/bin/mysql -uroot -p"$MYSQL_ROOT_PASSWORD" anikatsu < /home/*.sql
 else
     /usr/bin/mysql -uroot -p"$MYSQL_ROOT_PASSWORD" anikatsu < /var/www/localhost/htdocs/anikatsu.sql
-    echo `/usr/bin/mysql -uroot -p"$MYSQL_ROOT_PASSWORD" -e 'show databases'`
+    echo `/usr/bin/mysql -uroot -p"$MYSQL_ROOT_PASSWORD" -e 'show databases'` >> /home/entry.log
     echo 'sql command to add anikatsu.sql run' >> /home/entry.log
 fi 
 
