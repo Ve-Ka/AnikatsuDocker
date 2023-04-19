@@ -36,13 +36,13 @@ EOF
 rm -f $tfile && \
 fileCount=`ls -1 /home/*.sql 2>/dev/null | wc -l` && \
 if [ $fileCount != 0 ]; then 
-    mysql -uroot -p"$MYSQL_ROOT_PASSWORD" anikatsu < /home/*.sql
+    /usr/bin/mysql -uroot -p"$MYSQL_ROOT_PASSWORD" anikatsu < /home/*.sql
 else
-    mysql -uroot -p"$MYSQL_ROOT_PASSWORD" anikatsu < /var/www/localhost/htdocs/anikatsu.sql
-    echo `mysql -uroot -p"$MYSQL_ROOT_PASSWORD" -e 'show databases'` >> /home/entry.log
+    /usr/bin/mysql -uroot -p"$MYSQL_ROOT_PASSWORD" anikatsu < /var/www/localhost/htdocs/anikatsu.sql
+    echo `/usr/bin/mysql -uroot -p"$MYSQL_ROOT_PASSWORD" -e 'show databases'` >> /home/entry.log
     echo 'sql command to add anikatsu.sql run' >> /home/entry.log
 fi 
 
-/usr/bin/mysql -uroot -p"$MYSQL_ROOT_PASSWORD" anikatsu < /var/www/localhost/htdocs/anikatsu.sql
-
 exec /usr/bin/mysqld --user=root --bind-address=127.0.0.1
+
+echo 'end of command' >> /home/entry.log
