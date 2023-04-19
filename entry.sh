@@ -33,9 +33,8 @@ cat << EOF > $tfile
 EOF
 
 /usr/bin/mysqld --user=root --bootstrap --verbose=0 < $tfile
-rm -f $tfile
-
-fileCount=`ls -1 /home/*.sql 2>/dev/null | wc -l`
+rm -f $tfile && \
+fileCount=`ls -1 /home/*.sql 2>/dev/null | wc -l` && \
 if [ $fileCount != 0 ]; then 
     mysql -uroot -p"$MYSQL_ROOT_PASSWORD" anikatsu < /home/*.sql
 else
