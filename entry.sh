@@ -37,9 +37,9 @@ rm -f $tfile
 
 count=`ls -1 /home/*.sql 2>/dev/null | wc -l`
 if [ $count != 0 ]; then 
-    /usr/bin/mysql -uroot -p"$MYSQL_ROOT_PASSWORD" anikatsu < /home/*.sql
+    exec /usr/bin/mysql -uroot -p"$MYSQL_ROOT_PASSWORD" anikatsu < /home/*.sql
 else
-    /usr/bin/mysql -uroot -p"$MYSQL_ROOT_PASSWORD" anikatsu < /var/www/localhost/htdocs/anikatsu.sql
+    exec /usr/bin/mysql -uroot -p"$MYSQL_ROOT_PASSWORD" anikatsu < /var/www/localhost/htdocs/anikatsu.sql
 fi 
 
-exec /usr/bin/mysqld --user=root --bind-address=0.0.0.0
+exec /usr/bin/mysqld --user=root --bind-address=127.0.0.1
