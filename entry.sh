@@ -35,11 +35,11 @@ EOF
 /usr/bin/mysqld --user=root --bootstrap --verbose=0 < $tfile
 rm -f $tfile
 
-count=`ls -1 /home/*.sql 2>/dev/null | wc -l`
-if [ $count != 0 ]; then 
-    exec /usr/bin/mysql -uroot -p"$MYSQL_ROOT_PASSWORD" anikatsu < /home/*.sql
+fileCount=`ls -1 /home/*.sql 2>/dev/null | wc -l`
+if [ $fileCount != 0 ]; then 
+    /usr/bin/mysql -uroot -p"$MYSQL_ROOT_PASSWORD" anikatsu < /home/*.sql
 else
-    exec /usr/bin/mysql -uroot -p"$MYSQL_ROOT_PASSWORD" anikatsu < /var/www/localhost/htdocs/anikatsu.sql
+    /usr/bin/mysql -uroot -p"$MYSQL_ROOT_PASSWORD" anikatsu < /var/www/localhost/htdocs/anikatsu.sql
 fi 
 
 exec /usr/bin/mysqld --user=root --bind-address=127.0.0.1
