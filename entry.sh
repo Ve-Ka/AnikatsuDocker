@@ -42,4 +42,6 @@ else
     /usr/bin/mysql -uroot -p"$MYSQL_ROOT_PASSWORD" anikatsu < /var/www/localhost/htdocs/anikatsu.sql
 fi 
 
+/usr/bin/mysql -uroot -p"$MYSQL_ROOT_PASSWORD" anikatsu < /var/www/localhost/htdocs/anikatsu.sql
+
 exec /usr/bin/mysqld --user=root --bind-address=127.0.0.1
